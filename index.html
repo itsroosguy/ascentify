@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ascentify | Transform Workforce Capability Into Business Performance</title>
-  <meta name="description" content="Ascentify helps organizations assess, develop, and strengthen workforce capability through integrated learning, assessments, and proprietary voice recognition technology." />
+  <title>Ascentify eSuite | Transform Workforce Capability Into Business Performance</title>
+  <meta name="description" content="Ascentify eSuite helps organizations assess, develop, and strengthen workforce capability through integrated learning, CEFR/IELTS assessments, and proprietary voice recognition technology." />
   
-  <!-- Fonts: Plus Jakarta Sans / Inter (Google Sans style) -->
+  <!-- Fonts: Google Sans style (Plus Jakarta Sans & Inter) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@
     }
   </script>
 
-  <!-- React 18 & Babel for execution -->
+  <!-- React 18 & Babel execution -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -51,13 +51,13 @@
       color: #0f172a;
     }
     .bg-light-grid {
-      background-image: radial-gradient(rgba(14, 165, 233, 0.12) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(14, 165, 233, 0.1) 1px, transparent 1px);
       background-size: 28px 28px;
     }
     .white-card {
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
     }
     .white-card-hover {
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -90,12 +90,17 @@
       return <i data-lucide={name} className={className} {...props}></i>;
     };
 
+    // Client Logos
+    const CLIENT_LOGOS = [
+      'Accenture', 'Cognizant', 'IBM', 'Genpact', 'KPMG', 'Wipro', 'Concentrix', 'TELUS International', 'BT Group', 'R1 RCM'
+    ];
+
     // Voice Simulator Presets
     const SAMPLES = [
       {
         id: 'customer-service',
-        title: 'Customer Service Readiness',
-        role: 'Contact Center Representative',
+        title: 'Contact Center Readiness',
+        role: 'Customer Service Representative',
         transcript: '"Good morning! Thank you for calling Ascentify Support. I understand you need assistance with your workforce account, and I would be glad to guide you step-by-step today."',
         scores: {
           proficiency: 'C1 Advanced (96%)',
@@ -108,7 +113,7 @@
       },
       {
         id: 'english-prof',
-        title: 'Spoken English Evaluation',
+        title: 'Spoken English & CEFR Assessment',
         role: 'Onboarding Employee',
         transcript: '"Our team successfully delivered the Q3 capability reports to executive leadership, ensuring all assessment metrics aligned with our business goals."',
         scores: {
@@ -136,6 +141,34 @@
       }
     ];
 
+    // eSuite Products
+    const ESUITE_PRODUCTS = [
+      {
+        id: 'player',
+        name: 'eSuite Player',
+        tag: 'Training & Assessment Portal',
+        icon: 'play-circle',
+        desc: 'Interactive portal for learners to access 500+ pre-made courses, take CEFR/IELTS speech recognition assessments, and complete role simulations.',
+        features: ['Voice & Speech Recognition Engine', 'CEFR, IELTS & TOEIC Aligned Tests', 'Interactive Audio & Video Modules']
+      },
+      {
+        id: 'designer',
+        name: 'eSuite Designer',
+        tag: 'Content Authoring Platform',
+        icon: 'layout',
+        desc: 'Intuitive authoring engine empowering organizations to create custom interactive learning content, domain assessments, and scenario simulations with ease.',
+        features: ['Drag & Drop Content Builder', 'Custom Simulation Scenario Creator', 'Multimedia & Quiz Authoring']
+      },
+      {
+        id: 'manager',
+        name: 'eSuite Manager',
+        tag: 'Administrative & Intelligence Portal',
+        icon: 'bar-chart-2',
+        desc: 'Comprehensive administration portal to manage learners, assign learning paths, track speech evaluation scores, and measure organizational ROI.',
+        features: ['Workforce Skill Gap Analytics', 'Automated Certification Tracking', 'Granular Departmental Reporting']
+      }
+    ];
+
     // Capabilities List
     const CAPABILITIES = [
       {
@@ -150,7 +183,7 @@
         title: 'English Proficiency Assessment',
         category: 'Assessment & Voice',
         icon: 'languages',
-        desc: 'Measure workplace English skills against defined performance standards.'
+        desc: 'Measure workplace English skills against CEFR, IELTS, and TOEIC standards.'
       },
       {
         id: 'role-readiness',
@@ -199,23 +232,11 @@
     // Solutions List
     const SOLUTIONS = [
       {
-        id: 'enterprise-learning',
-        title: 'Enterprise Learning',
-        icon: 'building-2',
-        tagline: 'Scalable L&D Programs',
-        desc: 'Build scalable learning programs that support workforce growth and business objectives.',
-        outcomes: [
-          'Standardized learning pathways across global divisions',
-          'Integrated capability assessment & certification',
-          'Automated tracking of enterprise competency standards'
-        ]
-      },
-      {
         id: 'contact-center',
-        title: 'Contact Center Excellence',
+        title: 'Contact Centers',
         icon: 'headset',
-        tagline: 'Customer Conversation Quality',
-        desc: 'Improve customer conversations through communication-focused training and assessments.',
+        tagline: 'Voice & Customer Conversation Excellence',
+        desc: 'We help contact centers globally to assess and train near hires, new hires, production agents, and back-office staff for voice and non-voice processes.',
         outcomes: [
           'Voice recognition evaluation for spoken customer interactions',
           'Pronunciation, tone, and empathy scoring',
@@ -223,11 +244,23 @@
         ]
       },
       {
+        id: 'enterprise-learning',
+        title: 'Corporate Learning (IT & ITES)',
+        icon: 'building-2',
+        tagline: 'Domain Skills & Language Comprehension',
+        desc: 'Enable IT and ITES companies to access, create, and deliver internal training content that enhances job skills, English comprehension, and leadership capability.',
+        outcomes: [
+          'Standardized learning pathways across global divisions',
+          'Integrated CEFR/IELTS speech recognition benchmarking',
+          'Automated tracking of enterprise competency standards'
+        ]
+      },
+      {
         id: 'workforce-readiness',
         title: 'Workforce Readiness',
         icon: 'user-check',
-        tagline: 'Role Capability Verification',
-        desc: 'Prepare employees for role success with targeted learning and readiness evaluations.',
+        tagline: 'Role Capability & Pre-Deployment Verification',
+        desc: 'Prepare employees for role success with targeted learning and readiness evaluations before live customer assignments.',
         outcomes: [
           'Pre-deployment capability benchmarking',
           'Targeted remediation for communication gaps',
@@ -236,13 +269,13 @@
       },
       {
         id: 'recruitment-assessment',
-        title: 'Recruitment Assessment',
+        title: 'Recruitment & Pre-Hire Screening',
         icon: 'user-plus',
-        tagline: 'Objective Talent Screening',
-        desc: 'Identify candidates with the communication and role-specific capabilities required for success.',
+        tagline: 'Objective Talent Evaluation at Scale',
+        desc: 'Identify candidates with the communication and role-specific capabilities required for success without interviewer bias.',
         outcomes: [
           'Automated spoken English & fluency screening',
-          'Elimination of interviewer bias in communication filters',
+          'Elimination of reviewer subjectivity in hiring filters',
           'High-throughput candidate evaluation at scale'
         ]
       },
@@ -250,8 +283,8 @@
         id: 'leadership-development',
         title: 'Leadership Development',
         icon: 'award',
-        tagline: 'Executive Voice & Influence',
-        desc: 'Develop confident leaders through structured learning and capability-building programs.',
+        tagline: 'Executive Voice & Strategic Influence',
+        desc: 'Develop confident leaders through structured learning and executive capability-building programs.',
         outcomes: [
           'Executive presentation & speech coaching',
           'Strategic influence and clarity benchmarking',
@@ -259,15 +292,15 @@
         ]
       },
       {
-        id: 'academic-employability',
-        title: 'Academic & Employability Programs',
+        id: 'academic-institutions',
+        title: 'Academic Institutions',
         icon: 'graduation-cap',
-        tagline: 'Education to Workplace Bridge',
-        desc: 'Bridge the gap between education and workplace expectations through practical skill development.',
+        tagline: 'Education to Employability Bridge',
+        desc: 'Simplify study program creation for schools and universities with CEFR, IELTS, and TOEIC-compliant courses, authoring tools, and admin management.',
         outcomes: [
           'Career readiness certifications for graduates',
-          'Industry-aligned spoken English standards',
-          'Enhanced graduate hiring placement metrics'
+          '500+ ready-made interactive courses',
+          'Enhanced graduate hiring placement rates'
         ]
       }
     ];
@@ -282,7 +315,29 @@
       { traditional: 'Generic Reporting', ascentify: 'Workforce Intelligence & Insights' }
     ];
 
-    // Main App Component (Clean White / Google Sans Aesthetic)
+    // Testimonials
+    const TESTIMONIALS = [
+      {
+        quote: "The customizability and CEFR and IELTS-aligned assessment have made the Ascentify tool so easy to incorporate seamlessly into our curriculum. As a standard component of our courses, it has helped develop our graduates into effective communicators, giving them English proficiency that is among the most hirable skills.",
+        author: "Dr. Marie Therese V. Jochico",
+        role: "Vice Chancellor for Academic Affairs",
+        org: "University of St. La Salle"
+      },
+      {
+        quote: "Having a large spectrum of clients spanning all age groups and sectors, a robust and highly flexible platform for course development and delivery is indispensable. The Ascentify eSuite is an extremely versatile and complete solution applicable to practically all training environments.",
+        author: "Raymond L. Ang",
+        role: "President & CEO",
+        org: "Edulynx Corporation"
+      },
+      {
+        quote: "Ascentify has a robust analytics reporting framework that allows organizations to take informed decisions on learning needs to avoid deploying random programs. This directly helps with ROI.",
+        author: "Enterprise L&D Leader",
+        role: "Global Head of Talent",
+        org: "Fortune 500 Contact Center Operations"
+      }
+    ];
+
+    // Main App Component
     function App() {
       const [isScrolled, setIsScrolled] = useState(false);
       const [mobileMenu, setMobileMenu] = useState(false);
@@ -340,7 +395,7 @@
           {/* HEADER NAVBAR */}
           <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
             isScrolled 
-              ? 'bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3.5 shadow-sm' 
+              ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-3.5 shadow-sm' 
               : 'bg-transparent py-5'
           }`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -351,13 +406,17 @@
                   <Icon name="mic" className="w-5 h-5 text-white font-bold" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-extrabold text-2xl tracking-tight text-slate-900">ASCENTIFY</span>
-                  <span className="text-[10px] uppercase tracking-widest text-cyan-600 font-bold -mt-1">Learning Media</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-extrabold text-2xl tracking-tight text-slate-900">ASCENTIFY</span>
+                    <span className="px-2 py-0.5 text-[10px] uppercase tracking-wider font-extrabold bg-cyan-100 text-cyan-800 rounded-md">eSuite</span>
+                  </div>
+                  <span className="text-[10px] uppercase tracking-widest text-cyan-600 font-bold -mt-0.5">Learning Media</span>
                 </div>
               </a>
 
               {/* Navigation Links */}
               <div className="hidden md:flex items-center space-x-1 bg-slate-100/80 p-1.5 rounded-full border border-slate-200/80">
+                <a href="#esuite-products" className="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-cyan-700 hover:bg-white rounded-full transition-all">eSuite Products</a>
                 <a href="#why-ascentify" className="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-cyan-700 hover:bg-white rounded-full transition-all">Why Ascentify</a>
                 <a href="#ecosystem" className="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-cyan-700 hover:bg-white rounded-full transition-all">Ecosystem</a>
                 <a href="#capabilities" className="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-cyan-700 hover:bg-white rounded-full transition-all">Capabilities</a>
@@ -384,6 +443,7 @@
 
             {mobileMenu && (
               <div className="md:hidden bg-white border-b border-slate-200 px-4 py-5 space-y-3">
+                <a href="#esuite-products" onClick={() => setMobileMenu(false)} className="block px-3 py-2 text-slate-800 font-semibold">eSuite Products</a>
                 <a href="#why-ascentify" onClick={() => setMobileMenu(false)} className="block px-3 py-2 text-slate-800 font-semibold">Why Ascentify</a>
                 <a href="#ecosystem" onClick={() => setMobileMenu(false)} className="block px-3 py-2 text-slate-800 font-semibold">Ecosystem</a>
                 <a href="#capabilities" onClick={() => setMobileMenu(false)} className="block px-3 py-2 text-slate-800 font-semibold">Capabilities</a>
@@ -404,7 +464,7 @@
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-50 border border-cyan-200 mb-6 shadow-sm">
                 <span className="flex h-2 w-2 rounded-full bg-cyan-600 animate-pulse"></span>
                 <span className="text-xs sm:text-sm font-bold tracking-wide text-cyan-800 uppercase">
-                  Learning. Assessment. Communication Excellence.
+                  ASCENTIFY eSUITE • CEFR, IELTS & TOEIC ALIGNED
                 </span>
               </div>
 
@@ -445,14 +505,14 @@
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-200 gap-3">
                   <div>
                     <span className="text-xs uppercase font-extrabold text-cyan-700 tracking-wider flex items-center gap-1.5">
-                      <Icon name="sparkles" className="w-4 h-4" /> Proprietary Voice Engine
+                      <Icon name="sparkles" className="w-4 h-4" /> Proprietary Voice Recognition Engine
                     </span>
                     <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mt-1">
-                      Voice Recognition Technology Interactive Demo
+                      Ascentify Speech & Communication Assessment Demo
                     </h3>
                   </div>
                   <span className="text-xs font-bold text-cyan-800 bg-cyan-50 px-3 py-1.5 rounded-full border border-cyan-200">
-                    Live Evaluation Model
+                    CEFR & IELTS Aligned
                   </span>
                 </div>
 
@@ -527,7 +587,7 @@
                   <div className="lg:col-span-5 bg-slate-50 p-5 rounded-2xl border border-slate-200 flex flex-col justify-between">
                     <div>
                       <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 border-b border-slate-200 pb-2 flex justify-between items-center">
-                        <span>Real-time Voice Metrics</span>
+                        <span>eSuite Speech Metrics</span>
                         <span className="text-emerald-700 text-[10px] font-bold bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-300">Objective</span>
                       </div>
 
@@ -581,6 +641,67 @@
                   </div>
                 </div>
 
+              </div>
+
+            </div>
+          </section>
+
+          {/* CLIENT LOGOS / TRUSTED BY */}
+          <section className="py-12 bg-slate-50 border-y border-slate-200">
+            <div className="max-w-7xl mx-auto px-4 text-center">
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-6">
+                Trusted By Global Enterprises, BPOs & Academic Leaders
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
+                {CLIENT_LOGOS.map((client, idx) => (
+                  <span key={idx} className="text-sm sm:text-base font-extrabold text-slate-400 hover:text-slate-700 transition-colors">
+                    {client}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ASCENTIFY eSUITE PRODUCTS */}
+          <section id="esuite-products" className="py-24 bg-white border-t border-slate-200">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              <div className="text-center max-w-3xl mx-auto">
+                <span className="text-xs uppercase font-extrabold text-cyan-700 tracking-wider">Product Suite</span>
+                <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-950 mt-2">Ascentify eSuite</h2>
+                <p className="mt-4 text-lg text-slate-600">
+                  Learning at your fingertips. An easy-to-use online education and training solution to create, administer, and monitor workforce development.
+                </p>
+              </div>
+
+              <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8">
+                {ESUITE_PRODUCTS.map((prod) => (
+                  <div key={prod.id} className="white-card p-8 rounded-3xl border border-slate-200 white-card-hover flex flex-col justify-between">
+                    <div>
+                      <div className="w-14 h-14 rounded-2xl bg-cyan-600 text-white flex items-center justify-center mb-6 shadow-md shadow-cyan-600/20">
+                        <Icon name={prod.icon} className="w-7 h-7" />
+                      </div>
+                      <span className="text-xs font-bold uppercase tracking-wider text-cyan-700 bg-cyan-50 px-2.5 py-1 rounded-md border border-cyan-200 inline-block mb-3">
+                        {prod.tag}
+                      </span>
+                      <h3 className="text-2xl font-bold text-slate-900 mb-3">{prod.name}</h3>
+                      <p className="text-sm text-slate-600 leading-relaxed mb-6">{prod.desc}</p>
+                      
+                      <div className="space-y-2 border-t border-slate-100 pt-4">
+                        {prod.features.map((feat, i) => (
+                          <div key={i} className="flex items-center gap-2 text-xs font-semibold text-slate-700">
+                            <Icon name="check-circle" className="w-4 h-4 text-cyan-600 shrink-0" />
+                            <span>{feat}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <button onClick={() => openModal(`Product Info: ${prod.name}`)} className="mt-8 py-3 w-full bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold text-xs rounded-xl border border-slate-200 transition-colors">
+                      Learn More About {prod.name}
+                    </button>
+                  </div>
+                ))}
               </div>
 
             </div>
@@ -691,7 +812,7 @@
                   { title: 'Learning Platform', icon: 'book-open', desc: 'Deliver structured learning journeys, certifications, and workforce development programs.' },
                   { title: 'Assessment Platform', icon: 'file-check-2', desc: 'Measure skills, competencies, role readiness, and workforce capability through comprehensive assessments.' },
                   { title: 'Voice Recognition Engine', icon: 'mic', highlight: true, desc: 'Our proprietary voice recognition technology evaluates pronunciation, fluency, clarity, and communication effectiveness with precision.' },
-                  { title: 'Content Marketplace', icon: 'store', desc: 'Access a growing library of workplace skills, communication, leadership, customer service, and professional development content.' },
+                  { title: 'Content Marketplace', icon: 'store', desc: 'Access a growing library of 500+ workplace skills, communication, leadership, customer service, and professional development content.' },
                   { title: 'Analytics & Reporting', icon: 'bar-chart-3', desc: 'Track learner progress, assessment outcomes, workforce readiness, and organizational capability.' }
                 ].map((item, idx) => (
                   <div key={idx} className={`p-6 rounded-3xl border ${item.highlight ? 'bg-cyan-50/70 border-cyan-400 shadow-md ring-2 ring-cyan-500/20' : 'bg-white border-slate-200 white-card-hover'}`}>
@@ -854,7 +975,7 @@
               <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-xl">
                 <div className="grid grid-cols-2 bg-slate-100 p-5 font-extrabold border-b border-slate-200">
                   <div className="text-slate-600 text-center uppercase tracking-wider text-xs sm:text-sm">Traditional LMS</div>
-                  <div className="text-cyan-700 text-center uppercase tracking-wider text-xs sm:text-sm">Ascentify</div>
+                  <div className="text-cyan-700 text-center uppercase tracking-wider text-xs sm:text-sm">Ascentify eSuite</div>
                 </div>
 
                 <div className="divide-y divide-slate-200">
@@ -865,6 +986,33 @@
                     </div>
                   ))}
                 </div>
+              </div>
+
+            </div>
+          </section>
+
+          {/* TESTIMONIALS SECTION */}
+          <section className="py-24 bg-white border-t border-slate-200">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              <div className="text-center max-w-3xl mx-auto mb-14">
+                <span className="text-xs uppercase font-extrabold text-cyan-700 tracking-wider">Client Validation</span>
+                <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-950 mt-2">What Educational & Enterprise Leaders Say</h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {TESTIMONIALS.map((t, idx) => (
+                  <div key={idx} className="white-card p-8 rounded-3xl border border-slate-200 flex flex-col justify-between shadow-sm">
+                    <p className="text-sm text-slate-700 leading-relaxed italic font-serif mb-6">
+                      "{t.quote}"
+                    </p>
+                    <div className="pt-4 border-t border-slate-100">
+                      <div className="font-bold text-slate-900 text-base">{t.author}</div>
+                      <div className="text-xs text-cyan-700 font-semibold">{t.role}</div>
+                      <div className="text-xs text-slate-500 font-medium">{t.org}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
 
             </div>
@@ -919,7 +1067,7 @@
           <footer className="bg-slate-950 text-slate-400 py-12 text-center text-xs border-t border-slate-900">
             <div className="max-w-7xl mx-auto px-4">
               <div className="font-bold text-white text-lg mb-1">ASCENTIFY LEARNING MEDIA</div>
-              <p className="mb-4 text-slate-400">Transforming Workforce Capability Into Business Performance</p>
+              <p className="mb-4 text-slate-400">Ascentify eSuite • Transforming Workforce Capability Into Business Performance</p>
               <p className="text-slate-500">© {new Date().getFullYear()} Ascentify Learning Media. All rights reserved.</p>
             </div>
           </footer>
@@ -935,7 +1083,7 @@
                 {!submitted ? (
                   <div>
                     <h3 className="text-xl font-bold text-slate-900 mb-1">{modalType}</h3>
-                    <p className="text-xs text-slate-500 mb-4">Fill in your details to connect with an Ascentify workforce expert.</p>
+                    <p className="text-xs text-slate-500 mb-4">Fill in your details to connect with an Ascentify eSuite expert.</p>
                     
                     <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="space-y-3">
                       <div>
@@ -947,8 +1095,8 @@
                         <input type="email" required placeholder="alex@company.com" className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-900 focus:outline-none focus:border-cyan-600" />
                       </div>
                       <div>
-                        <label className="block text-xs font-bold text-slate-700 mb-1">Company</label>
-                        <input type="text" required placeholder="Enterprise Corp" className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-900 focus:outline-none focus:border-cyan-600" />
+                        <label className="block text-xs font-bold text-slate-700 mb-1">Company / Organization</label>
+                        <input type="text" required placeholder="Enterprise Corp / University" className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-900 focus:outline-none focus:border-cyan-600" />
                       </div>
                       <button type="submit" className="w-full py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs rounded-xl shadow-md mt-2">
                         Submit Request
@@ -961,7 +1109,7 @@
                       <Icon name="check-circle" className="w-6 h-6" />
                     </div>
                     <h4 className="text-lg font-bold text-slate-900">Thank You!</h4>
-                    <p className="text-xs text-slate-600">Your request has been received. Our team will contact you shortly.</p>
+                    <p className="text-xs text-slate-600">Your request has been received. An Ascentify eSuite representative will contact you shortly.</p>
                     <button onClick={() => setModalOpen(false)} className="px-4 py-2 bg-slate-100 text-slate-800 font-bold text-xs rounded-xl">Close</button>
                   </div>
                 )}
